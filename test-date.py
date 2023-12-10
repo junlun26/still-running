@@ -2,13 +2,13 @@ import datetime
 import schedule
 import time
 import pygsheets
-gc = pygsheets.authorize(service_account_file='D:/linebot/chat/gsheet.json')
+gc = pygsheets.authorize(service_account_file='./gsheet.json')
 sht = gc.open_by_url('https://docs.google.com/spreadsheets/d/1cxvkIggrRHYnZy0oUH-leCFHy3gWdJGEi7XC3i1Hv3c/edit#gid=0')
 wks_list = sht.worksheets()
 def job():
     date = datetime.datetime.now().date()
     wks_list.update_value('A1', date)
-schedule.every().minute.at(":00").do()
+schedule.every().minute.at(":00").do(job)
 
 #先執行一次
 schedule.run_all()
