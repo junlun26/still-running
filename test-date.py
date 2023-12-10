@@ -10,9 +10,6 @@ def job():
     wks_list.update_value('A1', date)
 schedule.every().minute.at(":00").do(job)
 
-#先執行一次
-schedule.run_all()
-
 #等待定時任務
 while True:
     schedule.run_pending()
