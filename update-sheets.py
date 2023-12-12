@@ -18,7 +18,7 @@ def update_sheets(dataframe, sheet):
     sht = gc.open_by_url('https://docs.google.com/spreadsheets/d/1cxvkIggrRHYnZy0oUH-leCFHy3gWdJGEi7XC3i1Hv3c/edit#gid=0')
     wks = sht[sheet]
     wks.clear()
-    wks.set_dataframe(dataframe, (0, 0))
+    wks.set_dataframe(dataframe, "A1")
 
 def crawler():
     url_ann = "https://www.mksh.phc.edu.tw/category/post-a/page/"
@@ -104,8 +104,6 @@ def crawler():
                     update_sheets(df, 2)
                     break
         page += 1
-
-    print("done")
 
 schedule.every().minute.at(":00").do(crawler)
 
