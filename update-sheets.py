@@ -105,9 +105,7 @@ def crawler():
                     break
         page += 1
 
-schedule.every().minute.at(":00").do(crawler)
-
-#schedule.run_all()
+schedule.every(8).hours.at(":00").do(crawler)
 
 while True:
     schedule.run_pending()
